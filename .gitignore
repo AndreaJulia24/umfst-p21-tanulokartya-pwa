@@ -1,0 +1,15 @@
+# Függőségek
+node_modules/
+
+# Vitest és lefedettségi riportok
+coverage/
+
+# Rendszer- és editorfájlok
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Naplófájlok
+*.log
+npm-debug.log*
