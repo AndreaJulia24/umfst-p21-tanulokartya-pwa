@@ -1,0 +1,17 @@
+{
+  "nev": "Anatómia - Nervus Vagus",
+  "kartyak": [
+    {
+      "elolap": "Melyik agyideg a nervus vagus?",
+      "hatlap": "A X. (tizedik) agyideg."
+    },
+    {
+      "elolap": "Milyen típusú rostokat tartalmaz a n. vagus?",
+      "hatlap": "Érző, mozgató és paraszimpatikus (vegetatív) rostokat."
+    },
+    {
+      "elolap": "Hol lép ki a koponyából a n. vagus?",
+      "hatlap": "A foramen jugulare-n keresztül."
+    }
+  ]
+}

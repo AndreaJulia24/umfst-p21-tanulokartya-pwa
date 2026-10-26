@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>Tanulókártya PWA</title>
+</head>
+<body>
+  <h1>Adatbázis teszt fut...</h1>
+  <p>Nyomj F12-t, és nézd meg a Console és az Application füleket!</p>
+
+  <script type="module">
+    import { addPakli, getPaklik } from './src/db.js';
+
+    async function teszt() {
+      // 1. Hozzáadunk egy fiktív paklit
+      await addPakli('Anatómia - Nervus Vagus');
+      
+      // 2. Lekérjük, mik vannak az adatbázisban
+      const paklik = await getPaklik();
+      console.log('Sikeres lekérdezés! A paklik tábla tartalma:', paklik);
+    }
+    
+    teszt();
+  </script>
+</body>
+</html>
