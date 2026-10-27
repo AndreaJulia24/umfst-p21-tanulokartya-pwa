@@ -45,7 +45,7 @@ document.getElementById('btn-back-decks').addEventListener('click', () => {
   showView('decks');
 });
 
-// --- Paklik kilistázása ---
+// --- Paklik kilistázása saját Export gombbal ---
 async function renderDecks() {
   deckList.innerHTML = 'Betöltés...';
   try {
@@ -58,37 +58,27 @@ async function renderDecks() {
     paklik.forEach(pakli => {
       const div = document.createElement('div');
       div.className = 'deck-item';
+      
       const title = document.createElement('strong');
       title.textContent = pakli.nev;
       
+      const btnGroup = document.createElement('div');
+      btnGroup.style.display = 'flex';
+      btnGroup.style.gap = '0.5rem';
+
+      // 1. Tanulás gomb
       const btnPlay = document.createElement('button');
-      btnPlay.className = 'btn';
+      btnPlay.className = 'btn btn-primary';
       btnPlay.textContent = 'Tanulás indítása';
       btnPlay.addEventListener('click', () => startStudy(pakli.id, pakli.nev));
 
-      const btnReset = document.createElement('button');
-      btnReset.className = 'btn';
-      btnReset.textContent = 'Újrakezdés';
-      btnReset.title = 'Kártyák visszaállítása a mai napra';
-      btnReset.addEventListener('click', async () => {
-        if (confirm(`Biztosan újra akarod kezdeni a(z) "${pakli.nev}" pakli tanulását?`)) {
-          await resetPakliProgress(pakli.id);
-          alert('A pakli sikeresen visszaállítva, újra esedékes minden kártya!');
-          renderDecks();
-        }
-      });
-
-      //Konkrét pakli Exportálása JSON-be
+      // 2. Pontosan ennek a paklinak az exportálása
       const btnExport = document.createElement('button');
       btnExport.className = 'btn';
       btnExport.textContent = 'Exportálás';
-      btnExport.title = 'Pakli letöltése JSON fájlként';
       btnExport.addEventListener('click', () => exportSingleDeck(pakli));
 
-      const btnGroup = document.createElement('div');
-      btnGroup.className = 'deck-btn-group';
       btnGroup.appendChild(btnPlay);
-      btnGroup.appendChild(btnReset);
       btnGroup.appendChild(btnExport);
 
       div.appendChild(title);
@@ -305,27 +295,3 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-async function exportSingleDeck(pakli) {
-  try {
-    const allKartyak = await getAllKartyak(pakli.id);
-    const exportData = {
-      nev: pakli.nev,
-      kartyak: allKartyak.map(k => ({
-        elolap: k.elolap,
-        hatlap: k.hatlap
-      }))
-    };
-
-    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${pakli.nev.replace(/[\s/\\?%*:|"<>]+/g, '_')}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  } catch (err) {
-    alert('Hiba az exportálás során: ' + err.message);
-  }
-}

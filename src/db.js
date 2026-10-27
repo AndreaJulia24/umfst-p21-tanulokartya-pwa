@@ -196,3 +196,25 @@ export async function getAllKartyak(pakliId) {
     request.onerror = () => reject(request.error);
   });
 }
+//RESETALNI a pakli összes kártyájának SM-2 értékeit az alapértelmezett értékekre
+export async function resetPakliProgress(pakliId) {
+  const db = await initDatabase();
+  const kartyak = await getAllKartyak(pakliId);
+  const ma = new Date().toISOString().slice(0, 10);
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('kartyak', 'readwrite');
+    const store = tx.objectStore('kartyak');
+
+    kartyak.forEach(k => {
+      k.ef = 2.5;
+      k.intervallum = 0;
+      k.ismetles = 0;
+      k.kovetkezo = ma;
+      store.put(k);
+    });
+
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
