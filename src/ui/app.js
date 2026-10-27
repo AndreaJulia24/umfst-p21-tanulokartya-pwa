@@ -201,3 +201,16 @@ importFile.addEventListener('change', (event) => {
 
 // Indítás
 showView('decks');
+
+// --- Service Worker regisztráció ---
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('Service Worker regisztrálva:', registration);
+            })
+            .catch(error => {
+                console.error('Service Worker regisztrációs hiba:', error);
+            });
+    });
+}
