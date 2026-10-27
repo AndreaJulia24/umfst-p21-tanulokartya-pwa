@@ -1,7 +1,142 @@
- body { font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 1rem; line-height: 1.5; }
-    .hidden { display: none !important; }
-    .card { border: 2px solid #ddd; padding: 2rem; border-radius: 8px; text-align: center; margin: 1rem 0; min-height: 200px; display: flex; flex-direction: column; justify-content: center; font-size: 1.2rem; }
-    .btn { padding: 0.5rem 1rem; margin: 0.2rem; cursor: pointer; border: 1px solid #007bff; background: white; color: #007bff; border-radius: 4px; font-weight: bold; }
-    .btn:hover { background: #007bff; color: white; }
-    .btn-primary { background: #007bff; color: white; }
-    .deck-item { border: 1px solid #ccc; padding: 1rem; margin: 0.5rem 0; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card {
+  border: 2px solid #ddd;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 1rem 0;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.btn {
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background: white;
+  color: #007bff;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background: white;
+  color: #007bff;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: inherit;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+.deck-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- STATISZTIKA ÉS DIAGRAM FORMÁZÁSA --- */
+
+.stats-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  flex: 1;
+}
+
+.stat-box span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+  display: block;
+}
+
+.chart-container {
+  display: flex;
+  align-items: flex-end;
+  height: 150px;
+  gap: 2px;
+  border-bottom: 1px solid #ccc;
+  margin-top: 1rem;
+  padding-bottom: 5px;
+}
+
+.chart-bar {
+  background-color: #007bff;
+  flex: 1;
+  position: relative;
+  border-radius: 2px 2px 0 0;
+}
+
+.chart-bar:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: inherit;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #007bff;
+  color: white;
+}

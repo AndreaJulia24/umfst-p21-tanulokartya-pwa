@@ -1,17 +1,35 @@
 {
-  "nev": "Anatómia - Nervus Vagus",
+  "nev": "Anatómia - Nervus Vagus és Idegrendszer",
   "kartyak": [
-    {
-      "elolap": "Melyik agyideg a nervus vagus?",
-      "hatlap": "A X. (tizedik) agyideg."
-    },
-    {
-      "elolap": "Milyen típusú rostokat tartalmaz a n. vagus?",
-      "hatlap": "Érző, mozgató és paraszimpatikus (vegetatív) rostokat."
-    },
-    {
-      "elolap": "Hol lép ki a koponyából a n. vagus?",
-      "hatlap": "A foramen jugulare-n keresztül."
-    }
+    { "elolap": "Hányadik agyideg a Nervus Vagus?", "hatlap": "A X. (tizedik) agyideg." },
+    { "elolap": "Milyen típusú rostokat tartalmaz a Nervus Vagus?", "hatlap": "Kevert ideg: motoros, szenzoros és paraszimpatikus rostokat tartalmaz." },
+    { "elolap": "Melyik koponyaalapi nyíláson lép ki a Nervus Vagus?", "hatlap": "A Foramen jugulare-n keresztül." },
+    { "elolap": "Mi a Nervus Vagus fő paraszimpatikus magja az agytörzsben?", "hatlap": "Nucleus dorsalis nervi vagi." },
+    { "elolap": "Melyik magból erednek a gégeizmokat beidegző branchialmotoros rostok?", "hatlap": "Nucleus ambiguus." },
+    { "elolap": "Melyik ideg felelős a hangszalagok mozgató beidegzéséért (kivéve a m. cricothyroideust)?", "hatlap": "Nervus recurrens (laryngeus recurrens)." },
+    { "elolap": "Mi a Nervus laryngeus recurrens bal oldali lefutásának sajátossága?", "hatlap": "Megkerüli az aortaívet (Arcus aortae) alulról, majd a tracheo-oesophagealis árokban fut felfelé." },
+    { "elolap": "Mi a Nervus laryngeus recurrens jobb oldali lefutásának sajátossága?", "hatlap": "Az arteria subclavia dextrát kerüli meg." },
+    { "elolap": "Melyik gégeizmot idegzi be a Nervus laryngeus superior külső ága?", "hatlap": "Musculus cricothyroideus (hangszalagfeszítő izom)." },
+    { "elolap": "Milyen hatással van a Nervus Vagus a szívműködésre?", "hatlap": "Negatív kronotróp (pulzusszám-csökkentő) és dromotróp (ingerületvezetést lassító) hatású." },
+    { "elolap": "Melyik szívbillentyű területéről közvetít afferens információkat a vagus?", "hatlap": "Aortaív baroreceptorai (glomus aorticum és presszoreceptorok)." },
+    { "elolap": "Melyik hasi szakaszig terjed a Nervus Vagus paraszimpatikus beidegzése?", "hatlap": "A Cannon-Böhm pontig (a colon transversum bal harmadának határáig)." },
+    { "elolap": "Melyik idegi ganglion látja el a vagus általános somatosensoros sejtjeit?", "hatlap": "Ganglion superius (jugulare)." },
+    { "elolap": "Melyik dúc tartalmazza a vagus viscerosensoros neuronjainak sejttesteit?", "hatlap": "Ganglion inferius (nodosum)." },
+    { "elolap": "Melyik fülkörüli terület érző beidegzését végzi a Ramus auricularis nervi vagi?", "hatlap": "A külső hallójárat hátsó-alsó falát és a fülkagyló concháját." },
+    { "elolap": "Hogyan befolyásolja a vagus stimuláció a gyomorsav-szekréciót?", "hatlap": "Fokozza a savtermelést és a motilitást az acetilkolin közvetítésével." },
+    { "elolap": "Milyen tünetet okoz az egyik oldali Nervus laryngeus recurrens sérülése?", "hatlap": "Rekedtséget (egyoldali hangszalagbénulás miatt)." },
+    { "elolap": "Milyen tünethez vezet a kétoldali Nervus laryngeus recurrens bénulása?", "hatlap": "Súlyos stridort, fulladást és afóniát (beszédképtelenséget)." },
+    { "elolap": "Melyik nyaki képlet hüvelyében fut a vagus ideg?", "hatlap": "Vagina carotica (az a. carotis communis/interna és a v. jugularis interna között hátul)." },
+    { "elolap": "Mi a vagovagalis reflex?", "hatlap": "Olyan gasztrointesztinális reflex, amelynek mind az afferens, mind az efferens szára a Nervus Vaguson fut." },
+    { "elolap": "Melyik reflexben szerepel a vagus motoros szárként a lágyszájpad emelésében?", "hatlap": "Garatreflex (öklendezési reflex)." },
+    { "elolap": "Melyik agyideg látja el a garatreflex afferens (érző) szárát?", "hatlap": "IX. agyideg (Nervus glossopharyngeus)." },
+    { "elolap": "Mi a Truncus vagalis anterior fő eredete a nyelőcső alsó szakaszán?", "hatlap": "A bal oldali Nervus Vagusból alakul ki." },
+    { "elolap": "Mi a Truncus vagalis posterior fő eredete a nyelőcsőnél?", "hatlap": "A jobb oldali Nervus Vagusból alakul ki." },
+    { "elolap": "Befolyásolja-e a Nervus Vagus a hörgők simaizomzatát?", "hatlap": "Igen, bronchokonstrikciót (hörgőszűkületet) és fokozott nyákelválasztást okoz." },
+    { "elolap": "Mi a vagus-tónus szerepe nyugalomban?", "hatlap": "Fenntartja az alacsonyabb nyugalmi pulzusszámot (vagális fék)." },
+    { "elolap": "Melyik agytörzsi mag dolgozza fel a vagusból érkező ízérző és viszcerális információkat?", "hatlap": "Nucleus tractus solitarii (NTS)." },
+    { "elolap": "Mit jelent a vasovagalis syncope?", "hatlap": "Hirtelen vagustúlsúly miatt kialakuló vérnyomás- és pulzusesés, ami átmeneti eszméletvesztéshez vezet." },
+    { "elolap": "Idegzi-e be a vagus a mellékvesevelőt?", "hatlap": "Nem, a mellékvesevelő szimpatikus preganglionaris beidegzést kap." },
+    { "elolap": "Milyen műtéti eljárással csökkentették régen a fekélybetegek gyomorsav-termelését?", "hatlap": "Vagotomia (a vagus ideg ágainak átvágása)." }
   ]
 }

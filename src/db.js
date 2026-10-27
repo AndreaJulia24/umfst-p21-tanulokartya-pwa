@@ -157,7 +157,7 @@ export async function importPakliJSON(jsonData) {
           ef: 2.5,
           intervallum: 0,
           ismetles: 0,
-          kovetkezo: ma
+          kovetkezo: ma // YYYY-MM-DD
         });
       });
     };
@@ -166,5 +166,26 @@ export async function importPakliJSON(jsonData) {
     tx.oncomplete = () => resolve('Sikeres import!');
     // Ha bármilyen hiba történik (pl. tárhely betelt), a rendszer automatikusan visszavonja (rollback) az egészet
     tx.onerror = () => reject(tx.error);
+  });
+}
+
+//az osszes kartya lekérdezése a statiszikához, pakli ID alapján
+
+export async function getAllKartyak(pakliId) {
+  const db = await initDatabase();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('kartyak', 'readonly');
+    const store = tx.objectStore('kartyak');
+    let request;
+    
+    if (pakliId !== undefined && pakliId !== null) {
+      const index = store.index('pakliId');
+      request = index.getAll(IDBKeyRange.only(pakliId));
+    } else {
+      request = store.getAll();
+    }
+    
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
   });
 }

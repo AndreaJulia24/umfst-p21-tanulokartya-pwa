@@ -6,10 +6,14 @@
   <title>Tanulókártya PWA</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="src/ui/style.css">
+  <link rel="icon" type="image/png" href="src/ui/assets/images/flash-cards.png">
 </head>
 <body>
   <header>
-    <h1>📚 Tanulókártyák</h1>
+    <h1 style="display: flex; align-items: center; gap: 0.5rem;">
+     <img src="src/ui/assets/images/flash-card.png" alt="Ikon" style="width: 32px; height: 32px; object-fit: contain;">
+        Tanulókártyák
+     </h1>
     <nav>
       <button class="btn" id="nav-decks">Paklik</button>
       <button class="btn" id="nav-stats">Statisztika</button>
@@ -24,6 +28,9 @@
     <hr>
     <h3>Új pakli importálása</h3>
     <input type="file" id="import-file" accept=".json">
+    <hr>
+    <h3>Pakli exportálása</h3>
+    <button class="btn" id="export-btn">Exportálás (JSON)</button>
   </main>
 
   <!-- TANULÁS NÉZET (Kezdetben rejtett) -->
@@ -53,7 +60,15 @@
   <!-- STATISZTIKA NÉZET (Kezdetben rejtett) -->
   <main id="view-stats" class="hidden">
     <h2>Statisztika</h2>
-    <p>Hamarosan...</p>
+    <div class="stats-grid">
+      <div class="stat-box">Ma esedékes<br><span id="stat-due">0</span></div>
+      <div class="stat-box">Új kártya<br><span id="stat-new">0</span></div>
+      <div class="stat-box">Tanult<br><span id="stat-learned">0</span></div>
+    </div>
+    <h3>30 napos előrejelzés (Kártyák/Nap)</h3>
+    <div class="chart-container" id ="forecast-chart">
+        <!-- ide generalja a diagramot -->
+    </div>
   </main>
 
   <!-- Kliensoldali logika betöltése ES modulként -->
