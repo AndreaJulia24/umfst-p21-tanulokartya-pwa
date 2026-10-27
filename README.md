@@ -49,3 +49,7 @@ A paklikhoz tartozó konkrét tanulókártyákat és azok SM-2 állapotát táro
 *   **Indexek:**
     *   `pakliId`: Gyors lekérdezés egy adott pakli összes kártyájának betöltéséhez.
     *   `kovetkezo`: A dátummező indexelése elengedhetetlen a ma esedékes kártyák 50 ms alatti lekérdezéséhez (IDBKeyRange használatával).
+
+## Élő demó
+Az alkalmazás elérhető és kipróbálható az alábbi címen:
+https://andreajulia24.github.io/umfst-p21-tanulokartya-pwa/
