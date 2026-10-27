@@ -53,3 +53,7 @@ A paklikhoz tartozó konkrét tanulókártyákat és azok SM-2 állapotát táro
 ## Élő demó
 Az alkalmazás elérhető és kipróbálható az alábbi címen:
 https://andreajulia24.github.io/umfst-p21-tanulokartya-pwa/
+
+## Offline működés demonstrációja
+
+![Offline működés](offline-gif/ezgif-optimized...gif)
