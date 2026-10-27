@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Offline működő tanulókártya PWA orvostanhallgatóknak vagy bármely más felhasználó számára, a SM-2 algoritmussal.">
   <title>Tanulókártya PWA</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="src/ui/style.css">
@@ -21,56 +22,85 @@
   </header>
   <hr>
 
-  <!-- PAKLIK NÉZET (Kezdőlap) -->
+ <!-- PAKLIK NÉZET (Kezdőlap) -->
   <main id="view-decks">
-    <h2>Paklijaim</h2>
-    <div id="deck-list">Betöltés...</div>
-    <hr>
-    <h3>Új pakli importálása</h3>
-    <input type="file" id="import-file" accept=".json">
-    <hr>
-    <h3>Pakli exportálása</h3>
-    <button class="btn" id="export-btn">Exportálás (JSON)</button>
-  </main>
+    <section class="section-card">
+      <h2 class="section-title">Paklijaim</h2>
+      <div id="deck-list">Betöltés...</div>
+    </section>
 
+    <section class="section-card">
+      <h2 class="section-title">Kezelés</h2>
+      
+      <div class="action-row">
+        <div>
+          <h3>Új pakli importálása</h3>
+          <p class="section-desc">Tölts fel egy érvényes JSON fájlt.</p>
+        </div>
+        <div class="file-upload-wrapper">
+            <label for="import-file" class="btn">Fájl kiválasztása</label>
+            <input type="file" id="import-file" accept=".json" class="hidden-input" aria-label="Pakli JSON fájl kiválasztása">
+            <span id="file-chosen-text" class="file-text"></span>
+        </div>
+      </div>
+
+      <hr class="inner-divider">
+
+      <div class="action-row">
+        <div>
+          <h3>Pakli exportálása</h3>
+          <p class="section-desc">Mentsd le a kártyákat megosztáshoz.</p>
+        </div>
+        <button class="btn" id="export-btn">Exportálás (JSON)</button>
+      </div>
+    </section>
+  </main>
+  
   <!-- TANULÁS NÉZET (Kezdetben rejtett) -->
   <main id="view-study" class="hidden">
-    <h2 id="study-title">Tanulás...</h2>
-    <p>Ma esedékes kártyák: <span id="study-remaining">0</span></p>
-
-    <div class="card" id="flashcard">
-      <div id="card-front">Előlap szövege</div>
-      <hr id="card-divider" class="hidden">
-      <div id="card-back" class="hidden">Hátlap szövege</div>
-    </div>
-
-    <div id="study-controls" style="text-align: center;">
-      <button class="btn btn-primary" id="btn-show">Mutasd (Space)</button>
-      <div id="eval-controls" class="hidden">
-        <button class="btn" data-q="1" title="Teljesen elfelejtettem">Újra (1)</button>
-        <button class="btn" data-q="3" title="Nehezen jutott eszembe">Nehéz (2)</button>
-        <button class="btn" data-q="4" title="Jól ment">Jó (3)</button>
-        <button class="btn" data-q="5" title="Azonnal tudtam">Könnyű (4)</button>
+    <section class="section-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <h2 id="study-title" class="section-title" style="margin-bottom: 0;">Tanulás...</h2>
+        <span class="badge">Hátralévő: <strong id="study-remaining">0</strong></span>
       </div>
-    </div>
-    <br>
-    <button class="btn" id="btn-back-decks">Vissza a paklikhoz</button>
+
+      <div class="card" id="flashcard">
+        <div id="card-front">Előlap szövege</div>
+        <hr id="card-divider" class="inner-divider hidden">
+        <div id="card-back" class="hidden">Hátlap szövege</div>
+      </div>
+
+      <!-- Vezérlőgombok -->
+      <div id="study-controls" style="text-align: center; margin: 1.5rem 0 1rem 0;">
+        <button class="btn btn-primary" id="btn-show">Mutasd (Space)</button>
+        <div id="eval-controls" class="hidden" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+          <button class="btn" data-q="1" title="Teljesen elfelejtettem">Újra (1)</button>
+          <button class="btn" data-q="3" title="Nehezen jutott eszembe">Nehéz (2)</button>
+          <button class="btn" data-q="4" title="Jól ment">Jó (3)</button>
+          <button class="btn" data-q="5" title="Azonnal tudtam">Könnyű (4)</button>
+        </div>
+      </div>
+
+      <hr class="inner-divider">
+
+      <button class="btn" id="btn-back-decks" style="width: 100%;">← Vissza a paklikhoz</button>
+    </section>
   </main>
 
-  <!-- STATISZTIKA NÉZET (Kezdetben rejtett) -->
+
+  <!-- STATISZTIKA NÉZET -->
   <main id="view-stats" class="hidden">
-    <h2>Statisztika</h2>
-    <div class="stats-grid">
-      <div class="stat-box">Ma esedékes<br><span id="stat-due">0</span></div>
-      <div class="stat-box">Új kártya<br><span id="stat-new">0</span></div>
-      <div class="stat-box">Tanult<br><span id="stat-learned">0</span></div>
-    </div>
-    <h3>30 napos előrejelzés (Kártyák/Nap)</h3>
-    <div class="chart-container" id ="forecast-chart">
-        <!-- ide generalja a diagramot -->
-    </div>
+    <section class="section-card">
+      <h2 class="section-title">Statisztika</h2>
+      <div class="stats-grid">
+        <div class="stat-box">Ma esedékes<br><span id="stat-due">0</span></div>
+        <div class="stat-box">Új kártya<br><span id="stat-new">0</span></div>
+        <div class="stat-box">Tanult<br><span id="stat-learned">0</span></div>
+      </div>
+      <h3 style="font-size: 1rem; color: #334155; margin-bottom: 0.5rem;">30 napos előrejelzés (Kártyák/Nap)</h3>
+      <div class="chart-container" id="forecast-chart"></div>
+    </section>
   </main>
-
   <!-- Kliensoldali logika betöltése ES modulként -->
   <script type="module" src="./src/ui/app.js"></script>
 </body>

@@ -1,142 +1,272 @@
 body {
-  font-family: system-ui, sans-serif;
-  max-width: 600px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 650px;
   margin: 0 auto;
-  padding: 1rem;
-  line-height: 1.5;
+  padding: 1.5rem 1rem;
+  line-height: 1.6;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+header nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 1.5rem 0;
+}
+
+.inner-divider {
+  border: none;
+  border-top: 1px solid #f1f5f9;
+  margin: 1rem 0;
 }
 
 .hidden {
   display: none !important;
 }
 
-.card {
-  border: 2px solid #ddd;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  margin: 1rem 0;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-.btn {
-  padding: 0.5rem 1rem;
-  margin: 0.2rem;
-  cursor: pointer;
-  border: 1px solid #007bff;
-  background: white;
-  color: #007bff;
-  border-radius: 4px;
-  font-weight: bold;
+/* szekció kártyák */
+.section-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.btn:hover {
-  background: #007bff;
-  color: white;
+.section-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
-.btn {
-  padding: 0.5rem 1rem;
-  margin: 0.2rem;
-  cursor: pointer;
-  border: 1px solid #007bff;
-  background: white;
-  color: #007bff;
-  border-radius: 4px;
-  font-weight: bold;
-  font-family: inherit;
-  transition: background-color 0.2s, color 0.2s;
+.section-desc {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
 }
 
-.btn:hover {
-  background: #007bff;
-  color: white;
-}
-
-.deck-item {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  border-radius: 6px;
+.action-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* --- STATISZTIKA ÉS DIAGRAM FORMÁZÁSA --- */
+.action-row h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #334155;
+}
 
+/* Pakli elemek */
+.deck-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.deck-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+
+.deck-item strong {
+  font-size: 1rem;
+  color: #1e293b;
+}
+
+/* gombok stilusa */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid #0056b3;
+  background-color: #ffffff;
+  color: #0056b3;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 86, 179, 0.2);
+}
+
+.btn-primary {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #004085;
+  border-color: #004085;
+}
+
+/* fajl import gomb */
+input[type="file"]::file-selector-button {
+  padding: 0.55rem 1.1rem;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  border: 1px solid #0056b3;
+  background-color: #ffffff;
+  color: #0056b3;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 86, 179, 0.2);
+}
+
+/* --- Rejtett input és egyedi felirat --- */
+.file-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.hidden-input {
+  display: none !important;
+}
+
+.file-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* --- STATISZTIKA DOBOZOK ÉS DIAGRAM --- */
 .stats-grid {
   display: flex;
   gap: 1rem;
-  justify-content: space-around;
-  text-align: center;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
 .stat-box {
-  background: #f8f9fa;
+  background: #f8fafc;
   padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
   flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.9rem;
 }
 
 .stat-box span {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #007bff;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0056b3;
   display: block;
+  margin-top: 0.25rem;
 }
 
 .chart-container {
   display: flex;
   align-items: flex-end;
-  height: 150px;
-  gap: 2px;
-  border-bottom: 1px solid #ccc;
-  margin-top: 1rem;
-  padding-bottom: 5px;
+  height: 140px;
+  gap: 3px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-top: 1.5rem;
+  padding-bottom: 4px;
 }
 
 .chart-bar {
-  background-color: #007bff;
+  background-color: #0056b3;
   flex: 1;
   position: relative;
-  border-radius: 2px 2px 0 0;
+  border-radius: 3px 3px 0 0;
+  min-height: 2px;
+  transition: height 0.3s ease;
 }
 
 .chart-bar:hover::after {
   content: attr(title);
   position: absolute;
-  top: -25px;
+  top: -28px;
   left: 50%;
   transform: translateX(-50%);
-  background: #333;
+  background: #0f172a;
   color: #fff;
-  padding: 2px 5px;
-  border-radius: 3px;
-  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   z-index: 10;
+} 
+
+/* tanulokartyak stilusa */
+.card {
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 1rem 0;
+  transition: all 0.2s ease;
 }
 
-input[type="file"]::file-selector-button {
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
-  border: 1px solid #007bff;
-  background-color: white;
-  color: #007bff;
-  border-radius: 4px;
-  font-weight: bold;
-  font-family: inherit;
-  transition: background-color 0.2s, color 0.2s;
+#card-front {
+  color: #0f172a;
 }
 
-input[type="file"]::file-selector-button:hover {
-  background-color: #007bff;
-  color: white;
+#card-back {
+  color: #0056b3;
+  font-weight: 600;
+}
+
+/* maradek kartya jelvény */
+.badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }

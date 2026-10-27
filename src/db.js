@@ -118,7 +118,7 @@ export async function getEsedekesKartyak(pakliId, maDatumString) {
 export async function importPakliJSON(jsonData) {
   const db = await initDatabase();
   
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     // --- 1. SÉMA VALIDÁLÁS ---
     if (!jsonData || typeof jsonData !== 'object') {
       return reject(new Error('Érvénytelen JSON formátum.'));
@@ -129,6 +129,13 @@ export async function importPakliJSON(jsonData) {
     if (!Array.isArray(jsonData.kartyak) || jsonData.kartyak.length === 0) {
       return reject(new Error('A kártyák listája hiányzik vagy üres.'));
     }
+
+    // Meglévő paklik ellenőrzése: ha már létezik, felülírjuk vagy kihagyjuk
+  const meglevok = await getAllKartyak();
+  const marLetezik = meglevok.find(p => p.nev === jsonData.nev);
+  if (marLetezik) {
+    throw new Error('Ez a pakli már létezik az adatbázisban!');
+  }
     
     // Kártyák formai ellenőrzése
     for (const k of jsonData.kartyak) {
