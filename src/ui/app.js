@@ -1,4 +1,4 @@
-import { getPaklik, importPakliJSON, getEsedekesKartyak, updateKartya, getAllKartyak } from '../db.js';
+import { getPaklik, importPakliJSON, getEsedekesKartyak, updateKartya, getAllKartyak, resetPakliProgress } from '../db.js';
 import { sm2 } from '../sm2.js';
 
 // --- DOM Elemek ---
@@ -66,8 +66,30 @@ async function renderDecks() {
       btnPlay.textContent = 'Tanulás indítása';
       btnPlay.addEventListener('click', () => startStudy(pakli.id, pakli.nev));
 
+      const btnReset = document.createElement('button');
+      btnReset.className = 'btn';
+      btnReset.textContent = 'Újrakezdés';
+      btnReset.title = 'Kártyák visszaállítása a mai napra';
+      btnReset.addEventListener('click', async () => {
+        if (confirm(`Biztosan újra akarod kezdeni a(z) "${pakli.nev}" pakli tanulását?`)) {
+          await resetPakliProgress(pakli.id);
+          alert('A pakli sikeresen visszaállítva, újra esedékes minden kártya!');
+          renderDecks();
+        }
+      });
+
+      //Konkrét pakli Exportálása JSON-be
+      const btnExport = document.createElement('button');
+      btnExport.className = 'btn';
+      btnExport.textContent = 'Exportálás';
+      btnExport.title = 'Pakli letöltése JSON fájlként';
+      btnExport.addEventListener('click', () => exportSingleDeck(pakli));
+
       const btnGroup = document.createElement('div');
+      btnGroup.className = 'deck-btn-group';
       btnGroup.appendChild(btnPlay);
+      btnGroup.appendChild(btnReset);
+      btnGroup.appendChild(btnExport);
 
       div.appendChild(title);
       div.appendChild(btnGroup);
@@ -283,39 +305,27 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-//JSON exportalas - FILE API
-const exportBtn = document.getElementById('export-btn');
-if (exportBtn) {
-  exportBtn.addEventListener('click', async () => {
-    try {
-      const paklik = await getPaklik();
-      if (paklik.length === 0) {
-        alert('Nincs még pakli az adatbázisban, amit exportálni lehetne!');
-        return;
-      }
-      
-      const celPakli = paklik[0];
-      const allKartyak = await getAllKartyak(celPakli.id);
-      
-      const exportData = {
-        nev: celPakli.nev,
-        kartyak: allKartyak.map(k => ({
-          elolap: k.elolap,
-          hatlap: k.hatlap
-        }))
-      };
+async function exportSingleDeck(pakli) {
+  try {
+    const allKartyak = await getAllKartyak(pakli.id);
+    const exportData = {
+      nev: pakli.nev,
+      kartyak: allKartyak.map(k => ({
+        elolap: k.elolap,
+        hatlap: k.hatlap
+      }))
+    };
 
-      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${celPakli.nev.replace(/\s+/g, '_')}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      alert('Hiba az exportálás során: ' + err.message);
-    }
-  });
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${pakli.nev.replace(/[\s/\\?%*:|"<>]+/g, '_')}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    alert('Hiba az exportálás során: ' + err.message);
+  }
 }

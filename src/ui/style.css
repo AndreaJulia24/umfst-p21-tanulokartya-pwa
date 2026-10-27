@@ -271,6 +271,11 @@ input[type="file"]::file-selector-button:hover {
   font-weight: 600;
 }
 
+.deck-btn-group {
+ width: 100%;
+flex-direction: column;
+}
+
 /* --- Mobil és szűk képernyős nézet (bármire 650px alatt) --- */
 @media (max-width: 650px) {
   body {
