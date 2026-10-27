@@ -1,26 +1,62 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tanulókártya PWA</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="src/ui/style.css">
 </head>
 <body>
-  <h1>Adatbázis teszt fut...</h1>
-  <p>Nyomj F12-t, és nézd meg a Console és az Application füleket!</p>
+  <header>
+    <h1>📚 Tanulókártyák</h1>
+    <nav>
+      <button class="btn" id="nav-decks">Paklik</button>
+      <button class="btn" id="nav-stats">Statisztika</button>
+    </nav>
+  </header>
+  <hr>
 
-  <script type="module">
-    import { addPakli, getPaklik } from './src/db.js';
+  <!-- PAKLIK NÉZET (Kezdőlap) -->
+  <main id="view-decks">
+    <h2>Paklijaim</h2>
+    <div id="deck-list">Betöltés...</div>
+    <hr>
+    <h3>Új pakli importálása</h3>
+    <input type="file" id="import-file" accept=".json">
+  </main>
 
-    async function teszt() {
-      // 1. Hozzáadunk egy fiktív paklit
-      await addPakli('Anatómia - Nervus Vagus');
-      
-      // 2. Lekérjük, mik vannak az adatbázisban
-      const paklik = await getPaklik();
-      console.log('Sikeres lekérdezés! A paklik tábla tartalma:', paklik);
-    }
-    
-    teszt();
-  </script>
+  <!-- TANULÁS NÉZET (Kezdetben rejtett) -->
+  <main id="view-study" class="hidden">
+    <h2 id="study-title">Tanulás...</h2>
+    <p>Ma esedékes kártyák: <span id="study-remaining">0</span></p>
+
+    <div class="card" id="flashcard">
+      <div id="card-front">Előlap szövege</div>
+      <hr id="card-divider" class="hidden">
+      <div id="card-back" class="hidden">Hátlap szövege</div>
+    </div>
+
+    <div id="study-controls" style="text-align: center;">
+      <button class="btn btn-primary" id="btn-show">Mutasd (Space)</button>
+      <div id="eval-controls" class="hidden">
+        <button class="btn" data-q="1" title="Teljesen elfelejtettem">Újra (1)</button>
+        <button class="btn" data-q="3" title="Nehezen jutott eszembe">Nehéz (2)</button>
+        <button class="btn" data-q="4" title="Jól ment">Jó (3)</button>
+        <button class="btn" data-q="5" title="Azonnal tudtam">Könnyű (4)</button>
+      </div>
+    </div>
+    <br>
+    <button class="btn" id="btn-back-decks">Vissza a paklikhoz</button>
+  </main>
+
+  <!-- STATISZTIKA NÉZET (Kezdetben rejtett) -->
+  <main id="view-stats" class="hidden">
+    <h2>Statisztika</h2>
+    <p>Hamarosan...</p>
+  </main>
+
+  <!-- Kliensoldali logika betöltése ES modulként -->
+  <script type="module" src="./src/ui/app.js"></script>
 </body>
 </html>

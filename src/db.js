@@ -116,7 +116,7 @@ export async function getEsedekesKartyak(pakliId, maDatumString) {
 
 // 7. JSON Import (Tipp 4: validálás és egyetlen írási tranzakció)
 export async function importPakliJSON(jsonData) {
-  const db = await initDB();
+  const db = await initDatabase();
   
   return new Promise((resolve, reject) => {
     // --- 1. SÉMA VALIDÁLÁS ---

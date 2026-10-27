@@ -1,0 +1,7 @@
+ body { font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 1rem; line-height: 1.5; }
+    .hidden { display: none !important; }
+    .card { border: 2px solid #ddd; padding: 2rem; border-radius: 8px; text-align: center; margin: 1rem 0; min-height: 200px; display: flex; flex-direction: column; justify-content: center; font-size: 1.2rem; }
+    .btn { padding: 0.5rem 1rem; margin: 0.2rem; cursor: pointer; border: 1px solid #007bff; background: white; color: #007bff; border-radius: 4px; font-weight: bold; }
+    .btn:hover { background: #007bff; color: white; }
+    .btn-primary { background: #007bff; color: white; }
+    .deck-item { border: 1px solid #ccc; padding: 1rem; margin: 0.5rem 0; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
