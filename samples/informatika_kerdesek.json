@@ -1,0 +1,225 @@
+{
+  "nev": "Informatika - Vegyes kérdések",
+  "kartyak": [
+    {
+      "elolap": "Mi a CPU feladata a számítógépben?",
+      "hatlap": "Utasításokat hajt végre, és feldolgozza az adatokat."
+    },
+    {
+      "elolap": "Mit jelent a RAM rövidítés?",
+      "hatlap": "Random Access Memory, vagyis véletlen elérésű memória."
+    },
+    {
+      "elolap": "Mire szolgál a ROM?",
+      "hatlap": "Nem felejtő memória, amely tartósan tárol bizonyos adatokat és programokat."
+    },
+    {
+      "elolap": "Mi a különbség a RAM és a háttértár között?",
+      "hatlap": "A RAM gyors, ideiglenes munkamemória; a háttértár tartósan őrzi az adatokat."
+    },
+    {
+      "elolap": "Mi az operációs rendszer feladata?",
+      "hatlap": "Kezeli a hardver erőforrásait, a fájlokat, a folyamatokat és a felhasználói kapcsolatot."
+    },
+    {
+      "elolap": "Mi a kernel?",
+      "hatlap": "Az operációs rendszer központi része, amely többek között a hardverhez és folyamatokhoz kapcsolódó feladatokat kezeli."
+    },
+    {
+      "elolap": "Mit jelent a GUI?",
+      "hatlap": "Graphical User Interface, azaz grafikus felhasználói felület."
+    },
+    {
+      "elolap": "Mit jelent a CLI?",
+      "hatlap": "Command-Line Interface, azaz parancssoros felület."
+    },
+    {
+      "elolap": "Mi a fájlrendszer?",
+      "hatlap": "Az adatok háttértáron történő rendszerezésének és tárolásának módja."
+    },
+    {
+      "elolap": "Mi a különbség a folyamat és a szál között?",
+      "hatlap": "A folyamat futó program és saját erőforrásokkal rendelkezik; a szál a folyamaton belüli végrehajtási egység."
+    },
+    {
+      "elolap": "Mi az algoritmus?",
+      "hatlap": "Egy probléma megoldására szolgáló, véges számú, egyértelmű lépésből álló eljárás."
+    },
+    {
+      "elolap": "Mit jelent a változó egy programban?",
+      "hatlap": "Névvel ellátott tárolóhely vagy értéket reprezentáló elem, amelynek értéke a program futása során változhat."
+    },
+    {
+      "elolap": "Mi a különbség a fordítóprogram és az interpreter között?",
+      "hatlap": "A fordítóprogram a kódot egy másik formára, gyakran gépi kódra alakítja; az interpreter utasításokat vagy köztes reprezentációt hajt végre futás közben."
+    },
+    {
+      "elolap": "Mi az adatstruktúra?",
+      "hatlap": "Az adatok szervezésének módja, amely befolyásolja a tárolást és a műveletek hatékonyságát."
+    },
+    {
+      "elolap": "Mi a verem (stack) működési elve?",
+      "hatlap": "LIFO: az utoljára betett elem kerül ki először."
+    },
+    {
+      "elolap": "Mi a sor (queue) működési elve?",
+      "hatlap": "FIFO: az elsőként betett elem kerül ki először."
+    },
+    {
+      "elolap": "Mi a bináris keresés előfeltétele?",
+      "hatlap": "A keresett adatsorozatnak rendezettnek kell lennie."
+    },
+    {
+      "elolap": "Mit jelent a Big O jelölés?",
+      "hatlap": "Az algoritmus erőforrásigényének, például futási idejének vagy memóriaigényének aszimptotikus leírását."
+    },
+    {
+      "elolap": "Mi az objektumorientált programozás négy gyakran említett alapelve?",
+      "hatlap": "Absztrakció, egységbe zárás (encapsulation), öröklődés és polimorfizmus."
+    },
+    {
+      "elolap": "Mi a különbség az osztály és az objektum között?",
+      "hatlap": "Az osztály egy típus vagy sablon; az objektum ennek egy konkrét példánya."
+    },
+    {
+      "elolap": "Mit jelent az öröklődés OOP-ban?",
+      "hatlap": "Egy osztály másik osztálytól tulajdonságokat és viselkedést vehet át."
+    },
+    {
+      "elolap": "Mi az egységbe zárás (encapsulation)?",
+      "hatlap": "Az adatok és a hozzájuk tartozó műveletek összefogása, valamint a belső állapot szabályozott elérése."
+    },
+    {
+      "elolap": "Mi a polimorfizmus?",
+      "hatlap": "Azonos felületen vagy műveleten keresztül különböző típusok eltérő viselkedést mutathatnak."
+    },
+    {
+      "elolap": "Mi a relációs adatbázis?",
+      "hatlap": "Táblákból álló adatmodell, amelyben a táblák közötti kapcsolatokat is meghatározhatjuk."
+    },
+    {
+      "elolap": "Mire szolgál az SQL?",
+      "hatlap": "Relációs adatbázisok adatainak lekérdezésére és kezelésére, illetve struktúrájuk meghatározására."
+    },
+    {
+      "elolap": "Mi a PRIMARY KEY?",
+      "hatlap": "A tábla rekordjait egyedileg azonosító kulcs."
+    },
+    {
+      "elolap": "Mi a FOREIGN KEY?",
+      "hatlap": "Olyan mező vagy mezőcsoport, amely egy másik tábla kulcsára hivatkozik, és segíti a referenciális integritást."
+    },
+    {
+      "elolap": "Mi a különbség a DELETE és a DROP között SQL-ben?",
+      "hatlap": "A DELETE rekordokat töröl egy táblából; a DROP egy adatbázis-objektumot, például táblát távolít el."
+    },
+    {
+      "elolap": "Mit jelent az adatbázis-normalizálás?",
+      "hatlap": "A redundancia csökkentésére és az adatok konzisztenciájának javítására szolgáló adatbázis-tervezési eljárás."
+    },
+    {
+      "elolap": "Mi az API?",
+      "hatlap": "Meghatározott szabályok és interfészek összessége, amelyeken keresztül szoftverkomponensek kommunikálhatnak."
+    },
+    {
+      "elolap": "Mire használjuk a HTTP GET metódust?",
+      "hatlap": "Általában egy erőforrás lekérésére."
+    },
+    {
+      "elolap": "Mire használjuk a HTTP POST metódust?",
+      "hatlap": "Általában adatok elküldésére, gyakran új erőforrás létrehozására vagy művelet indítására."
+    },
+    {
+      "elolap": "Mit jelent a HTTP 404-es státuszkód?",
+      "hatlap": "A kért erőforrás nem található."
+    },
+    {
+      "elolap": "Mi a különbség a frontend és a backend között?",
+      "hatlap": "A frontend a felhasználóval közvetlenül kapcsolatban álló rész; a backend a szerveroldali logikát és adatkezelést végzi."
+    },
+    {
+      "elolap": "Mi a DNS feladata?",
+      "hatlap": "A domainneveket IP-címekhez rendeli feloldáskor."
+    },
+    {
+      "elolap": "Mi a különbség az IPv4 és az IPv6 között?",
+      "hatlap": "Az IPv4 32 bites, az IPv6 128 bites címeket használ."
+    },
+    {
+      "elolap": "Mi a TCP egyik fontos tulajdonsága?",
+      "hatlap": "Kapcsolatorientált, és megbízható, sorrendtartó adatátvitelt biztosít."
+    },
+    {
+      "elolap": "Miben különbözik az UDP a TCP-től?",
+      "hatlap": "Az UDP kapcsolat nélküli, kisebb többletterhelésű, de nem garantálja a kézbesítést és a sorrendet."
+    },
+    {
+      "elolap": "Mi az IP-cím?",
+      "hatlap": "A hálózati interfész azonosítására és az adatcsomagok útvonalválasztására használt logikai cím."
+    },
+    {
+      "elolap": "Mit jelent a tűzfal (firewall)?",
+      "hatlap": "A hálózati forgalmat szabályok alapján engedélyező vagy tiltó biztonsági rendszer."
+    },
+    {
+      "elolap": "Mi az adathalászat (phishing)?",
+      "hatlap": "Megtévesztésen alapuló támadás, amely bizalmas adatok megszerzésére vagy káros művelet elérésére törekszik."
+    },
+    {
+      "elolap": "Mi a többtényezős hitelesítés (MFA)?",
+      "hatlap": "Legalább két különböző típusú hitelesítési tényező használata a személyazonosság ellenőrzésére."
+    },
+    {
+      "elolap": "Mi a hash-függvény egyik fontos tulajdonsága?",
+      "hatlap": "Azonos bemenetből azonos hosszúságú kivonatot ad; a kriptográfiai hash-eket úgy tervezik, hogy nehéz legyen az eredeti bemenetet visszaállítani."
+    },
+    {
+      "elolap": "Mi a titkosítás célja?",
+      "hatlap": "Az adatok bizalmasságának védelme úgy, hogy a megfelelő kulcs nélkül ne legyenek olvashatók."
+    },
+    {
+      "elolap": "Mi a különbség a hitelesítés és a jogosultságkezelés között?",
+      "hatlap": "A hitelesítés ellenőrzi, ki a felhasználó; a jogosultságkezelés meghatározza, mit tehet."
+    },
+    {
+      "elolap": "Mi a gépi tanulás?",
+      "hatlap": "A mesterséges intelligencia egyik területe, amelyben a rendszer adatokból mintázatokat tanul, és ezek alapján végez feladatokat."
+    },
+    {
+      "elolap": "Mi a felügyelt tanulás?",
+      "hatlap": "Olyan tanulási módszer, amely címkézett példákból tanul."
+    },
+    {
+      "elolap": "Mit jelent a feature extraction az adatelemzésben?",
+      "hatlap": "A nyers adatokból a feladat szempontjából hasznos jellemzők kinyerését."
+    },
+    {
+      "elolap": "Mi a különbség a tanító- és a teszthalmaz között?",
+      "hatlap": "A tanítóhalmaz a modell tanítására szolgál; a teszthalmaz a teljesítményének független értékelésére."
+    },
+    {
+      "elolap": "Mit jelent a túlillesztés (overfitting)?",
+      "hatlap": "A modell túlságosan alkalmazkodik a tanítóadatokhoz, ezért új adatokon rosszabbul teljesíthet."
+    },
+    {
+      "elolap": "Mi a verziókezelő rendszer célja?",
+      "hatlap": "A fájlok változásainak követése, korábbi verziók visszaállítása és a közös munka támogatása."
+    },
+    {
+      "elolap": "Mire szolgál a Git commit?",
+      "hatlap": "A változtatások egy adott állapotának rögzítésére a projekt verziótörténetében."
+    },
+    {
+      "elolap": "Mi a különbség a Git pull és a Git push között?",
+      "hatlap": "A pull távoli változtatásokat tölt le és integrál; a push helyi commitokat küld a távoli tárolóba."
+    },
+    {
+      "elolap": "Mi a virtuális gép?",
+      "hatlap": "Szoftveresen emulált számítógépes környezet, amely saját operációs rendszert futtathat."
+    },
+    {
+      "elolap": "Mi a konténerizáció lényege?",
+      "hatlap": "Az alkalmazás és függőségei elkülönített, hordozható környezetbe csomagolása, általában a gazda operációs rendszer kernelének megosztásával."
+    }
+  ]
+}
