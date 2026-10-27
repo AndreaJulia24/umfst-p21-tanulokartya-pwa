@@ -1,15 +1,17 @@
 //Service Worker fájl a PWA-hoz ahol a cache-elés és offline működés történik
 
-const CACHE_NAME = 'tanulokartya-cache-v3';
+const CACHE_NAME = 'tanulokartya-cache-v4';
 
 const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/src/ui/style.css',
-    '/src/ui/app.js',
-    '/src/db.js',
-    '/src/sm2.js',
-    '/manifest.webmanifest',
+   './',
+  './index.html',
+  './src/ui/style.css',
+  './src/ui/app.js',
+  './src/db.js',
+  './src/sm2.js',
+  './manifest.webmanifest',
+  './src/ui/assets/images/flash-card.png',
+  './src/ui/assets/images/flash-cards.png',
 ];
 
 // Install event: cache the assets
