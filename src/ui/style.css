@@ -271,12 +271,35 @@ input[type="file"]::file-selector-button:hover {
   font-weight: 600;
 }
 
-.deck-btn-group {
- width: 100%;
- flex-direction: column;
- gap: 0.8rem;
+/* Szép, fehér hátterű legördülő választó */
+.select-box {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #0056b3;
+  background-color: #ffffff;
+  color: #0056b3;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
 }
 
+.export-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+.deck-btn-group {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.5rem !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+}
 /* --- Mobil és szűk képernyős nézet (bármire 650px alatt) --- */
 @media (max-width: 650px) {
   body {
@@ -340,9 +363,17 @@ input[type="file"]::file-selector-button:hover {
   }
 
   .deck-btn-group {
-    display: flex;
+    flex-direction: column !important;
+    width: 100%;
+  }
+  .deck-btn-group .btn {
+    width: 100%;
+  }
+  .export-controls {
     flex-direction: column;
-    gap: 0.5rem;
+    width: 100%;
+  }
+  .select-box, #export-btn {
     width: 100%;
   }
 }

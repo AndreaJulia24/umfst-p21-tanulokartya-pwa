@@ -38,9 +38,8 @@
           <p class="section-desc">Tölts fel egy érvényes JSON fájlt.</p>
         </div>
         <div class="file-upload-wrapper">
-            <label for="import-file" class="btn">Fájl kiválasztása</label>
-            <input type="file" id="import-file" accept=".json" class="hidden-input" aria-label="Pakli JSON fájl kiválasztása">
-            <span id="file-chosen-text" class="file-text"></span>
+          <label for="import-file" class="btn">Fájl kiválasztása</label>
+          <input type="file" id="import-file" accept=".json" class="hidden-input" aria-label="Pakli JSON fájl kiválasztása">
         </div>
       </div>
 
@@ -49,9 +48,12 @@
       <div class="action-row">
         <div>
           <h3>Pakli exportálása</h3>
-          <p class="section-desc">Mentsd le a kártyákat megosztáshoz.</p>
+          <p class="section-desc">Válaszd ki a menteni kívánt paklit.</p>
         </div>
-        <button class="btn" id="export-btn">Exportálás (JSON)</button>
+        <div class="export-controls">
+          <select id="export-deck-select" class="select-box"></select>
+          <button class="btn" id="export-btn">Exportálás (JSON)</button>
+        </div>
       </div>
     </section>
   </main>
@@ -63,7 +65,7 @@
         <h2 id="study-title" class="section-title" style="margin-bottom: 0;">Tanulás...</h2>
         <span class="badge">Hátralévő: <strong id="study-remaining">0</strong></span>
       </div>
-
+  
       <div class="card" id="flashcard">
         <div id="card-front">Előlap szövege</div>
         <hr id="card-divider" class="inner-divider hidden">

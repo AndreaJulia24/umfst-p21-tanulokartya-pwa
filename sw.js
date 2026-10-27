@@ -1,6 +1,6 @@
 //Service Worker fájl a PWA-hoz ahol a cache-elés és offline működés történik
 
-const CACHE_NAME = 'tanulokartya-cache-v5';
+const CACHE_NAME = 'tanulokartya-cache-v7'; // Verziószám növelése a cache frissítéséhez
 
 const ASSETS_TO_CACHE = [
    './',

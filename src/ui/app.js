@@ -7,6 +7,8 @@ const viewStudy = document.getElementById('view-study');
 const viewStats = document.getElementById('view-stats');
 const deckList = document.getElementById('deck-list');
 const importFile = document.getElementById('import-file');
+const exportSelect = document.getElementById('export-deck-select');
+const exportBtn = document.getElementById('export-btn');
 
 // Tanulás nézet elemei
 const studyTitle = document.getElementById('study-title');
@@ -34,28 +36,41 @@ function showView(viewName) {
     viewStudy.classList.remove('hidden');
   } else if (viewName === 'stats') {
     viewStats.classList.remove('hidden');
-    renderStats(); // <--- ITT HÍVJUK MEG A STATISZTIKÁT
+    renderStats();
   }
 }
 
 document.getElementById('nav-decks').addEventListener('click', () => showView('decks'));
 document.getElementById('nav-stats').addEventListener('click', () => showView('stats'));
 document.getElementById('btn-back-decks').addEventListener('click', () => {
-  aktivKartyak = []; // Kilépéskor ürítjük
+  aktivKartyak = [];
   showView('decks');
 });
 
-// --- Paklik kilistázása saját Export gombbal ---
+// --- Paklik kilistázása gombokkal ---
 async function renderDecks() {
   deckList.innerHTML = 'Betöltés...';
+  if (exportSelect) exportSelect.innerHTML = '';
+
   try {
     const paklik = await getPaklik();
     if (paklik.length === 0) {
       deckList.innerHTML = '<p>Nincs még pakli. Importálj egyet alább!</p>';
+      if (exportSelect) exportSelect.innerHTML = '<option value="">Nincs elérhető pakli</option>';
       return;
     }
+
     deckList.innerHTML = '';
     paklik.forEach(pakli => {
+      // Kezelés menüpont dropdown feltöltése
+      if (exportSelect) {
+        const opt = document.createElement('option');
+        opt.value = pakli.id;
+        opt.textContent = pakli.nev;
+        exportSelect.appendChild(opt);
+      }
+
+      // Pakli kártya doboz
       const div = document.createElement('div');
       div.className = 'deck-item';
       
@@ -63,23 +78,29 @@ async function renderDecks() {
       title.textContent = pakli.nev;
       
       const btnGroup = document.createElement('div');
-      btnGroup.style.display = 'flex';
-      btnGroup.style.gap = '0.5rem';
+      btnGroup.className = 'deck-btn-group';
 
-      // 1. Tanulás gomb
+      // 1. Tanulás indítása gomb (egységes világos stílus)
       const btnPlay = document.createElement('button');
-      btnPlay.className = 'btn btn-primary';
+      btnPlay.className = 'btn';
       btnPlay.textContent = 'Tanulás indítása';
       btnPlay.addEventListener('click', () => startStudy(pakli.id, pakli.nev));
 
-      // 2. Pontosan ennek a paklinak az exportálása
-      const btnExport = document.createElement('button');
-      btnExport.className = 'btn';
-      btnExport.textContent = 'Exportálás';
-      btnExport.addEventListener('click', () => exportSingleDeck(pakli));
+      // 2. Újrakezdés gomb
+      const btnReset = document.createElement('button');
+      btnReset.className = 'btn';
+      btnReset.textContent = 'Újrakezdés';
+      btnReset.title = 'Kártyák visszaállítása a mai napra';
+      btnReset.addEventListener('click', async () => {
+        if (confirm(`Biztosan újra akarod kezdeni a(z) "${pakli.nev}" pakli tanulását?`)) {
+          await resetPakliProgress(pakli.id);
+          alert('A pakli visszaállítva, újra tanulható!');
+          renderDecks();
+        }
+      });
 
       btnGroup.appendChild(btnPlay);
-      btnGroup.appendChild(btnExport);
+      btnGroup.appendChild(btnReset);
 
       div.appendChild(title);
       div.appendChild(btnGroup);
@@ -209,7 +230,49 @@ importFile.addEventListener('change', (event) => {
   reader.readAsText(file);
 });
 
-// --- STATISZTIKA SZAMOLAS ES DIAGRAM  ---
+// --- JSON Exportálás a Kezelés blokkból ---
+if (exportBtn) {
+  exportBtn.addEventListener('click', async () => {
+    try {
+      const selectedId = exportSelect ? parseInt(exportSelect.value, 10) : null;
+
+      if (!selectedId) {
+        alert('Nincs kiválasztva pakli az exportáláshoz!');
+        return;
+      }
+
+      const paklik = await getPaklik();
+      const celPakli = paklik.find(p => p.id === selectedId);
+      if (!celPakli) {
+        alert('A kiválasztott pakli nem található!');
+        return;
+      }
+
+      const allKartyak = await getAllKartyak(celPakli.id);
+      const exportData = {
+        nev: celPakli.nev,
+        kartyak: allKartyak.map(k => ({
+          elolap: k.elolap,
+          hatlap: k.hatlap
+        }))
+      };
+
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${celPakli.nev.replace(/[\s/\\?%*:|"<>]+/g, '_')}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert('Hiba az exportálás során: ' + err.message);
+    }
+  });
+}
+
+// --- STATISZTIKA SZÁMOLÁS ÉS DIAGRAM ---
 async function renderStats() {
   const statDue = document.getElementById('stat-due');
   const statNew = document.getElementById('stat-new');
@@ -279,19 +342,19 @@ async function renderStats() {
     console.error('Hiba a statisztika betöltésekor:', err);
   }
 } 
+
 // Indítás
 showView('decks');
 
 // --- Service Worker regisztráció ---
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-            .then(registration => {
-                console.log('Service Worker regisztrálva:', registration);
-            })
-            .catch(error => {
-                console.error('Service Worker regisztrációs hiba:', error);
-            });
-    });
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(registration => {
+        console.log('Service Worker regisztrálva:', registration);
+      })
+      .catch(error => {
+        console.error('Service Worker regisztrációs hiba:', error);
+      });
+  });
 }
-

@@ -196,7 +196,8 @@ export async function getAllKartyak(pakliId) {
     request.onerror = () => reject(request.error);
   });
 }
-//RESETALNI a pakli összes kártyájának SM-2 értékeit az alapértelmezett értékekre
+
+// Pakli kártyáinak alaphelyzetbe állítása a mai napra (újratanuláshoz)
 export async function resetPakliProgress(pakliId) {
   const db = await initDatabase();
   const kartyak = await getAllKartyak(pakliId);
